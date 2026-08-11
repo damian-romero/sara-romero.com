@@ -1,0 +1,16 @@
+name: Deploy to GitHub Pages
+# Disabled: this site deploys via Netlify (see netlify.toml), not GitHub Pages.
+# Trigger removed so this doesn't run automatically on push. Delete this file
+# once you've confirmed Netlify deploys are working.
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses:  helaili/jekyll-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

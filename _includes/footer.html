@@ -1,0 +1,37 @@
+<!-- Theme default had a Formspree contact form + phone/address block here — removed.
+     No contact form is in scope (see proposal JHD-20260810-2232 / work plan); contact
+     info lives on the Contacto page (email + socials) instead. -->
+
+<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				{% for key_value in site.socials %}
+					{% if key_value[1] %}
+						<li>
+							<a href="{{ key_value[1] }}" class="icon alt fa-{{ key_value[0] | downcase }}" target="_blank" rel="noopener noreferrer" aria-label="{{ key_value[0] }}">
+								<span class="label">{{ key_value[0] }}</span>
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+			<ul class="copyright">
+				<li>&copy; {{ site.title }} — {{ 'now' | date: "%Y" }}</li>
+				<!-- Attribution required by the Forty theme's CCA 3.0 license (html5up.net/license)
+				     unless a one-time Pixelarity license is purchased to remove it — see repo README. -->
+				<li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+	<script src="{{ "assets/js/jquery.min.js" | absolute_url }}"></script>
+	<script src="{{ "assets/js/jquery.scrolly.min.js" | absolute_url }}"></script>
+	<script src="{{ "assets/js/jquery.scrollex.min.js" | absolute_url }}"></script>
+	<script src="{{ "assets/js/skel.min.js" | absolute_url }}"></script>
+	<script src="{{ "assets/js/util.js" | absolute_url }}"></script>
+	<!--[if lte IE 8]><script src="{{ "assets/js/ie/respond.min.js" | absolute_url }}"></script><![endif]-->
+	<script src="{{ "assets/js/main.js" | absolute_url }}"></script>

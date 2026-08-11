@@ -1,0 +1,13 @@
+name: Deploy to GitHub Pages
+# Disabled — see note in github-pages.yml. This site deploys via Netlify.
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: helaili/jekyll-action@2.0.5
+        build_only: true

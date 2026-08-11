@@ -1,0 +1,13 @@
+# Unused — this site deploys via Netlify (netlify.toml), not GitLab Pages. Safe to delete.
+image: ruby
+
+pages:
+  stage: build
+  script:
+  - gem install jekyll
+  - jekyll build -d public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

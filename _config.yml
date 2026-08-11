@@ -1,0 +1,39 @@
+# site settings
+title: Sara Romero
+subtitle: Productora y Compositora Musical
+email: edicionesvivace@gmail.com
+description: Sara Romero — productora y compositora musical. Coordinadora de la Academia de Música Antigua (UNAM).
+baseurl: "" # site is served from the domain root
+url: "https://sara-romero.com"
+
+# homepage tiles (used on Inicio to link out to Trayectoria / Contacto)
+tiles-source: pages # accepts "posts" or "pages"
+tiles-count: 2
+
+# social settings (key must match name of font awesome icon)
+# see https://fontawesome.com/icons?d=gallery&p=2&s=brands
+# Icons are not shown if value is empty
+# You need to restart jekyll for changes to have an effect
+socials:
+  Facebook: https://www.facebook.com/sara.romero.796
+  Instagram: https://www.instagram.com/edicionesvivace
+  LinkedIn: # TBD — add once Sara's LinkedIn page exists (quote includes "creación de página de LinkedIn")
+  GitHub:
+  GitLab:
+  Google-Plus:
+  Twitter:
+  Slack:
+
+# build settings
+markdown: kramdown
+
+sass:
+  style: compressed
+
+exclude:
+- "*.gemspec"
+- LICENSE.md
+- CONTRIBUTING.md
+- README.md
+- Gemfile
+- Gemfile.lock

@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+locale: es
+
+# Phase 0 scope: only the safe, structural front-matter fields (title,
+# description) are exposed here. The three pages' body content is currently
+# raw HTML (theme section markup), not plain prose — editing that through a
+# generic markdown widget would be easy for Sara to break by accident.
+# Phase 2 of the work plan restructures each page's real content into clean
+# front-matter fields (short text/markdown per block) before exposing "body"
+# editing here. Don't widen this config until that restructuring is done.
+
+collections:
+  - name: "inicio"
+    label: "Inicio"
+    files:
+      - name: "inicio"
+        label: "Página de Inicio"
+        file: "index.md"
+        fields:
+          - { label: "Título de navegación", name: "title", widget: "string" }
+          - { label: "Título grande (hero)", name: "landing-title", widget: "string" }
+
+  - name: "trayectoria"
+    label: "Trayectoria"
+    files:
+      - name: "trayectoria"
+        label: "Página de Trayectoria"
+        file: "trayectoria.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descripción corta", name: "description", widget: "string" }
+
+  - name: "contacto"
+    label: "Contacto"
+    files:
+      - name: "contacto"
+        label: "Página de Contacto"
+        file: "contacto.md"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Descripción corta", name: "description", widget: "string" }
