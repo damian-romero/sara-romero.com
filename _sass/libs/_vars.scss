@@ -19,8 +19,13 @@
 	);
 
 // Font.
+// Per Clients/SaraRomero/04_Brand/sara_romero_brand_guide_v1.html —
+// Playfair Display for headings, Source Sans Pro for body (already the
+// theme default, so body copy needed no change). Google Fonts import is
+// in _includes/head.html.
 	$font: (
 		family:				('Source Sans Pro', Helvetica, sans-serif),
+		family-heading:		('Playfair Display', Georgia, serif),
 		family-fixed:		('Courier New', monospace),
 		weight:				300,
 		weight-bold:		600,
@@ -29,19 +34,42 @@
 	);
 
 // Palette.
+// Rethemed from the Forty default (dark navy bg, white fg) to a white-base
+// palette per the brand guide and Sara's direction: white background,
+// near-black ink for text/dark sections, one vibrant blue accent used
+// sparingly. Names match the brand guide's color.raw entries.
+//
+//   bg / bg-alt   → Blanco #FFFFFF / Blanco Papel #F7F7F8 (page bg + header/#main bg)
+//   fg / fg-bold  → Negro Suave #262626 (body text) / Negro Tinta #14161A (headings,
+//                   and — important — also used as a SOLID FILL background on
+//                   button.special, .icon.alt, and the header logo pill, so it
+//                   must stay dark; don't lighten fg-bold casually)
+//   fg-light      → Gris Pizarra-ish muted tone, footer copyright text on white
+//   border/border-bg → hairlines / inline-code bg, light grays
+//   highlight     → Azul Sinfonía #1F4FE0 — THE vibrant blue accent (links, button
+//                   hover/active, CTAs). Used sparingly per the brand guide — it's
+//                   an accent, not a secondary background color.
+//   accent1-6     → decorative variants for the home tile grid and any future
+//                   landing-page ".styleN" header/banner variants. Deliberately
+//                   kept within the blue/ink/gray family (not the original
+//                   teal/purple/coral/gold rainbow) to stay on-brand. None of
+//                   these equal fg-bold (#14161A) — the header logo pill's
+//                   ".alt.styleN" state only overrides the pill's TEXT color,
+//                   not its fg-bold background, so an accent equal to fg-bold
+//                   would render invisible text-on-same-color.
 	$palette: (
-		bg:					#242943,
-		bg-alt:				#2a2f4a,
-		fg:					#ffffff,
-		fg-bold:			#ffffff,
-		fg-light:			rgba(244,244,255,0.2),
-		border:				rgba(212,212,255,0.1),
-		border-bg:			rgba(212,212,255,0.035),
-		highlight:			#9bf1ff,
-		accent1:			#6fc3df,
-		accent2:			#8d82c4,
-		accent3:			#ec8d81,
-		accent4:			#e7b788,
-		accent5:			#8ea9e8,
-		accent6:			#87c5a4
+		bg:					#ffffff,
+		bg-alt:				#f7f7f8,
+		fg:					#262626,
+		fg-bold:			#14161a,
+		fg-light:			#7a7f85,
+		border:				#e4e4e7,
+		border-bg:			#f1f1f2,
+		highlight:			#1f4fe0,
+		accent1:			#1f4fe0,
+		accent2:			#4b76f0,
+		accent3:			#0f3ab0,
+		accent4:			#5f6368,
+		accent5:			#7a7f85,
+		accent6:			#a8acb0
 	);

@@ -2,8 +2,12 @@
 layout: page
 title: Elements
 image: assets/images/pic01.jpg
-nav-menu: true
+nav-menu: false
+show_tile: false
 ---
+<!-- Unused Forty theme sample page — disconnected from nav and homepage tiles.
+Safe to delete locally, see README Cleanup section. -->
+
 
 <!-- Main -->
 <div id="main" class="alt">
