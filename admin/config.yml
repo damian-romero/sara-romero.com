@@ -1,6 +1,13 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: damian-romero/sara-romero.com
   branch: main
+  # Auth: GitHub OAuth via Netlify's OAuth provider tokens (Netlify acts as the
+  # OAuth proxy, no separate auth server needed). Requires a one-time GitHub
+  # OAuth App registration + Client ID/Secret linked in the Netlify dashboard
+  # (Project configuration > Access & security > OAuth) — see README.
+  # git-gateway is NOT used: Sveltia CMS doesn't support that backend at all
+  # (unmaintained, rate-limit-prone), independent of Netlify Identity's status.
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"

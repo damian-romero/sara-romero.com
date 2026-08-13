@@ -17,8 +17,9 @@ Scaffolded from the [Forty Jekyll theme](https://github.com/andrewbanchich/forty
 ## Pages
 
 - `index.md` — Inicio
-- `trayectoria.md` — Trayectoria (AMA UNAM, Ediciones Vivace; Orquesta Sincrophonía
-  gets a mention + link only, not its own block — per client instruction 2026-08-10)
+- `trayectoria.md` — Trayectoria (Orquesta Sincrophonía, Ediciones Vivace — both
+  full blocks; AMA UNAM gets a short paragraph + link only. Order/weight flipped
+  2026-08-12 per client — Fase 0 had it the other way around)
 - `contacto.md` — Contacto (email + social links; no contact form — out of scope)
 
 ## Local dev
@@ -37,12 +38,30 @@ work plan).
 
 ## CMS (Sveltia, Tier 1)
 
-`/admin` — see `admin/config.yml`. Backend is `git-gateway`, which requires
-**Netlify Identity + Git Gateway enabled on the Netlify site** (Site configuration
-→ Identity → Enable, then Services → Git Gateway → Enable). That's a Netlify
-dashboard step, not something set from the repo — do it once the site is
-connected to Netlify, then invite Sara as an Identity user so she can log into
-`/admin`.
+`/admin` — see `admin/config.yml`. Backend is `github` (`damian-romero/sara-romero.com`,
+`main` branch), **not** `git-gateway` — Sveltia CMS doesn't support the
+git-gateway backend at all (it's unmaintained and rate-limit-prone), regardless
+of whether Netlify Identity itself is deprecated. That was a correction made
+2026-08-12 after the original Phase 0 scaffold assumed Identity + Git Gateway
+would work.
+
+Auth is GitHub OAuth via Netlify's **OAuth provider tokens** feature — Netlify
+proxies the OAuth exchange, so no separate auth server is needed. One-time
+setup once the site is connected to Netlify:
+
+1. In GitHub: **Settings → Developer settings → OAuth Apps → New OAuth App.**
+   Authorization callback URL must be exactly `https://api.netlify.com/auth/done`.
+   Note the Client ID, then generate and note the Client Secret (shown once).
+2. In Netlify: **Project configuration → Access & security → OAuth → Install
+   provider → GitHub**, paste in the Client ID + Client Secret.
+3. Sara needs her own free GitHub account to log into `/admin` (click
+   "Sign in with GitHub" → authorize once → done). This is a real change from
+   the original plan, which assumed an email/password Identity login with no
+   GitHub account needed — there's no supported alternative on Sveltia today.
+4. Give Sara's GitHub account **write access to this repo** (Settings →
+   Collaborators) so her commits through the CMS actually succeed.
+
+No Netlify Identity setup needed at all — that toggle can stay off.
 
 ## Cleanup
 
@@ -59,6 +78,8 @@ convenient — none of it is required for the 3 real pages above:
 - `.github/FUNDING.yml`, `.gitlab-ci.yml` (leftover from the upstream template)
 - `elements.md`, `forty_jekyll_theme.gemspec`
 - `newfile_test.txt` (empty file, leftover from scaffolding — harmless, delete whenever)
+- `assets/images/banner.jpg`, `pic07.jpg`, `pic08.jpg` — superseded by the
+  `.webp` versions of the same photos (see Photos below), unreferenced anywhere
 
 ## Theme / brand
 
@@ -80,19 +101,29 @@ in the right places. Still worth a visual check once you can actually run
 
 ## Photos
 
-Real photos from `Clients/SaraRomero/03_Assets_Raw/photos/` are in, resized/
-compressed with ImageMagick (originals are 15-20MB camera JPEGs — much too
-heavy to ship as-is):
+Real photos from `Clients/SaraRomero/03_Assets_Raw/photos/` are in, resized and
+converted to WebP with ImageMagick (originals are 15-20MB camera JPEGs — much
+too heavy to ship as-is). WebP over JPEG: 35-45% smaller at the same visual
+quality, and browser support is universal in 2026 — no `<picture>` fallback
+needed.
 
-- `assets/images/banner.jpg` — **HARAGAN ENSAYO CNV_3582.jpg** (2400px wide,
-  ~410KB), the homepage hero. Per Damián's instruction 2026-08-11.
-- `assets/images/pic07.jpg` — **DSC_5751.jpg** (1400px wide, ~250KB), Sara at
-  the Dragon Ball Live Symphony rehearsal with an Orquesta Sincrophonía score
-  visible — used as Trayectoria's tile image on the homepage and its own
-  page-banner thumbnail (`trayectoria.md`'s `image:` field).
-- `assets/images/pic08.jpg` — **DSC_5602.jpg** (1400px wide, ~215KB), backstage
-  — used as Contacto's homepage tile image (`contacto.md`'s `image:` field;
-  the `page` layout doesn't surface it anywhere else).
+- `assets/images/banner.webp` — **HARAGAN ENSAYO CNV_3582.jpg** (2400px wide,
+  ~205KB, was ~410KB as JPEG), the homepage hero. Per Damián's instruction 2026-08-11.
+- `assets/images/pic07.webp` — **DSC_5751.jpg** (1400px wide, ~130KB, was
+  ~250KB as JPEG), Sara at the Dragon Ball Live Symphony rehearsal with an
+  Orquesta Sincrophonía score visible — used as Trayectoria's tile image on
+  the homepage and its own page-banner thumbnail (`trayectoria.md`'s `image:`
+  field). Fits even better now that Sincrophonía leads Trayectoria (2026-08-12
+  scope change).
+- `assets/images/pic08.webp` — **DSC_5602.jpg** (1400px wide, ~127KB, was
+  ~216KB as JPEG), backstage — used as Contacto's homepage tile image
+  (`contacto.md`'s `image:` field; the `page` layout doesn't surface it
+  anywhere else).
+
+The original `.jpg` versions (`banner.jpg`, `pic07.jpg`, `pic08.jpg`) are still
+in `assets/images/` — Cowork's sandbox can't delete files in connected
+folders, so they're leftover, unreferenced, and safe to delete locally
+whenever convenient (added to Cleanup below).
 
 **Hero treatment note:** the theme's original banner overlay was a flat white
 veil at 0.85 opacity — right for the dark-navy demo, but it would nearly erase

@@ -2,7 +2,7 @@
 layout: page
 title: Contacto
 description: 'Escríbeme o sígueme en redes.'
-image: assets/images/pic08.jpg
+image: assets/images/pic08.webp
 nav-menu: true
 show_tile: true
 ---
