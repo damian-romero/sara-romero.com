@@ -17,7 +17,7 @@ show_tile: true
 		<ul class="actions">
 			<li><a href="https://www.facebook.com/sara.romero.796" target="_blank" rel="noopener noreferrer" class="button">Facebook</a></li>
 			<li><a href="https://www.instagram.com/edicionesvivace" target="_blank" rel="noopener noreferrer" class="button">Instagram</a></li>
-			<!-- LinkedIn: TBD — página aún no creada (incluida en el alcance de la propuesta) -->
+			<li><a href="https://www.linkedin.com/in/sara-romero-rojas-55196a429" target="_blank" rel="noopener noreferrer" class="button">LinkedIn</a></li>
 		</ul>
 		<p>
 			<a href="https://musica.unam.mx/ama" target="_blank" rel="noopener noreferrer">Academia de Música Antigua — UNAM</a><br />
