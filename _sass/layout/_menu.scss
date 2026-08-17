@@ -23,6 +23,10 @@
 		opacity: 0;
 		overflow: hidden;
 		padding: 3em 2em;
+		@include breakpoint(small) {
+			padding: 3em 1em;
+		}
+
 		position: fixed;
 		top: 0;
 		visibility: hidden;
@@ -43,7 +47,9 @@
 			overflow: auto;
 			text-align: center;
 			visibility: hidden;
-			width: 18em;
+			// Widened along with the larger link text below so it has more
+			// room to fit; max-width: 100% still caps it on narrow screens.
+			width: 24em;
 
 			> :first-child {
 				margin-top: _size(element-margin);
@@ -68,12 +74,19 @@
 						border: 0;
 						border-top: solid 1px _palette(border);
 						display: block;
-						font-size: 0.8em;
+						// 2.5x the theme default (0.8em) per client request — with only
+						// 4 menu items max, large, easily-tappable text reads better
+						// than the theme's original compact list.
+						font-size: 2em;
 						font-weight: _font(weight-bold);
 						letter-spacing: _font(letter-spacing-alt);
-						line-height: 4em;
+						line-height: 1.5;
 						text-decoration: none;
 						text-transform: uppercase;
+						// Safety net for very narrow screens: wrap a long single-word
+						// item onto a second line instead of clipping it.
+						overflow-wrap: break-word;
+						word-break: break-word;
 					}
 
 					> .button {
