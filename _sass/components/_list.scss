@@ -65,6 +65,12 @@
 			cursor: default;
 			list-style: none;
 			padding-left: 0;
+			display: flex;
+			flex-wrap: wrap;
+			// Items wrap onto multiple rows on narrow screens (eg. the Contacto
+			// page's 3 social buttons); row-gap keeps those rows from touching
+			// since the li's own padding only adds horizontal spacing.
+			row-gap: (_size(element-margin) * 0.5);
 
 			li {
 				display: inline-block;
@@ -83,6 +89,9 @@
 			}
 
 			&.vertical {
+				flex-direction: column;
+				row-gap: 0;
+
 				li {
 					display: block;
 					padding: (_size(element-margin) * 0.5) 0 0 0;
