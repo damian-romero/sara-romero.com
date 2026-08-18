@@ -44,7 +44,9 @@
 //                   and — important — also used as a SOLID FILL background on
 //                   button.special, .icon.alt, and the header logo pill, so it
 //                   must stay dark; don't lighten fg-bold casually)
-//   fg-light      → Gris Pizarra-ish muted tone, footer copyright text on white
+//   fg-light      → Gris Pizarra-ish muted tone, footer copyright text on white.
+//                   Darkened from the original #7a7f85 (4.03:1 on white, fails
+//                   WCAG AA) to #6b6f75 (5.05:1) per a Lighthouse a11y audit.
 //   border/border-bg → hairlines / inline-code bg, light grays
 //   highlight     → Azul Sinfonía #1F4FE0 — THE vibrant blue accent (links, button
 //                   hover/active, CTAs). Used sparingly per the brand guide — it's
@@ -62,7 +64,7 @@
 		bg-alt:				#f7f7f8,
 		fg:					#262626,
 		fg-bold:			#14161a,
-		fg-light:			#7a7f85,
+		fg-light:			#6b6f75,
 		border:				#e4e4e7,
 		border-bg:			#f1f1f2,
 		highlight:			#1f4fe0,

@@ -4,8 +4,13 @@
 @import 'libs/functions';
 @import 'libs/mixins';
 @import 'libs/skel';
-@import 'font-awesome.min.css';
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic');
+// Inlined (not a plain CSS @import) so it compiles into main.css instead of
+// firing a second, sequential render-blocking request — see vendor/_font-awesome.scss.
+@import 'vendor/font-awesome';
+// The theme's default Source Sans Pro @import (old, non-swap Google Fonts API)
+// was removed — Playfair Display + Source Sans Pro are already loaded via the
+// <link> in head.html with font-display: swap, so this was a redundant,
+// render-blocking duplicate request.
 
 /*
 	Forty by HTML5 UP

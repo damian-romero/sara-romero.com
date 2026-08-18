@@ -105,8 +105,9 @@
 				$body.removeClass('is-loading');
 			}, 200);
 
-		// Clear transitioning state on unload/hide.
-			$window.on('unload pagehide', function() {
+		// Clear transitioning state on hide. `unload` dropped — it's deprecated
+		// and `pagehide` already covers the same cases (plus bfcache).
+			$window.on('pagehide', function() {
 				window.setTimeout(function() {
 					$('.is-transitioning').removeClass('is-transitioning');
 				}, 250);
