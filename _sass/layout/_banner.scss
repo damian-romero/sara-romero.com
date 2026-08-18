@@ -11,7 +11,10 @@
 		@include vendor('background-image', 'url("../images/banner.webp")');
 		@include vendor('display', 'flex');
 		@include padding(4em, 0, (2em, 0, 0, 0));
-		background-attachment: fixed;
+		// background-attachment: fixed positions the image against the whole
+		// viewport instead of this box, so the visible crop shifted depending on
+		// viewport size (eg. different at different zoom levels, since zooming
+		// changes the effective CSS viewport). scroll keeps the crop consistent.
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -75,6 +78,9 @@
 
 					&:after {
 						max-width: 100%;
+						// The site-wide header.major underline is dark (fg-bold),
+						// right for white sections but invisible on this hero photo.
+						background-color: _palette(bg);
 					}
 				}
 			}
@@ -83,6 +89,10 @@
 				@include vendor('display', 'flex');
 				@include vendor('align-items', 'center');
 				margin: 0 0 _size(element-margin) 0;
+				// Landing pages (eg. Trayectoria) interpolate page.description as
+				// raw text here, not wrapped in a <p>, so the color needs to live
+				// on .content itself too -- the "p" rule below alone won't reach it.
+				color: _palette(bg);
 
 				> * {
 					margin-left: 1.5em;
@@ -130,10 +140,6 @@
 				@include vendor('transform', 'translateX(-0.5em)');
 				opacity: 0;
 			}
-		}
-
-		@include breakpoint(large) {
-			background-attachment: scroll;
 		}
 
 		@include breakpoint(small) {
